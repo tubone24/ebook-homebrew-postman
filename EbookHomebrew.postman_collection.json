@@ -12,18 +12,167 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://ebook-homebrew.herokuapp.com/status",
-					"protocol": "https",
+					"raw": "{{base_url}}/status",
 					"host": [
-						"ebook-homebrew",
-						"herokuapp",
-						"com"
+						"{{base_url}}"
 					],
 					"path": [
 						"status"
 					]
 				},
 				"description": "Get server status and version"
+			},
+			"response": []
+		},
+		{
+			"name": "Get List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{base_url}}/data/upload/list",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"data",
+						"upload",
+						"list"
+					]
+				},
+				"description": "Get converted file list"
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Images",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd6ddb45-ac63-4e4f-95c9-395699bafceb",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"contentType\": \"string\",\r\n  \"images\": [\r\n    \"string\"\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/data/upload",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"data",
+						"upload"
+					]
+				},
+				"description": "Upload base64 encoded Images in images Array, returns uploadId"
+			},
+			"response": []
+		},
+		{
+			"name": "Convert Images to PDF",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"contentType\": \"string\",\r\n  \"uploadId\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/convert/pdf",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"convert",
+						"pdf"
+					]
+				},
+				"description": "Convert uploaded images to PDF with uploadId"
+			},
+			"response": []
+		},
+		{
+			"name": "Download converted PDF",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"uploadId\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/convert/pdf/download",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"convert",
+						"pdf",
+						"download"
+					]
+				},
+				"description": "Download for converted PDF with uploadId"
 			},
 			"response": []
 		}
