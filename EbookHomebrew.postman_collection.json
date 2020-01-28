@@ -1,0 +1,32 @@
+{
+	"info": {
+		"_postman_id": "5c82cbe4-4d38-400c-87ff-6fadf689070b",
+		"name": "EbookHomebrew",
+		"description": "The Ebook HomeBrew provides you functional Command-line interface (CLI) which change file name to only digit name like 001.jpg and make e-book format files. And also you can import this modules and use your python codes.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://ebook-homebrew.herokuapp.com/status",
+					"protocol": "https",
+					"host": [
+						"ebook-homebrew",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"status"
+					]
+				},
+				"description": "Get server status and version"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
